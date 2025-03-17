@@ -3,3 +3,4 @@ pydantic
 google-ai-generativelanguage
 langchain_google_genai
 playwright
+reportlab

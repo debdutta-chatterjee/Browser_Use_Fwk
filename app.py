@@ -8,7 +8,7 @@ from browser_use import Controller,ActionResult
 from playwright.async_api import BrowserContext
 
 load_dotenv()
-gemini_api_key = os.environ["GEMIN_API_KEY"]
+gemini_api_key = os.environ["GEMINI_API_KEY"]
 
 task =(
     'I am UI automation tester validating the tasks'
@@ -66,3 +66,25 @@ async def main():
     print(test_result)
     assert result.confirmation_message == "Thank you! Your order will be delivered in next few weeks :-)."
 asyncio.run(main())
+
+import json
+from fpdf import FPDF
+
+# Load JSON data
+with open('result.json', 'r') as json_file:
+    data = json.load(json_file)
+
+# Initialize PDF
+pdf = FPDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+
+# Write JSON data to PDF
+for key, value in data.items():
+    pdf.cell(0, 10, f"{key}: {value}", ln=True)
+
+# Save the PDF
+pdf.output("output.pdf")
+
+print("PDF has been created successfully!")
