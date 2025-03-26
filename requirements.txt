@@ -7,3 +7,5 @@ reportlab
 pytest
 anyio
 pytest-asyncio
+pyperclip
+pytest-xdist
